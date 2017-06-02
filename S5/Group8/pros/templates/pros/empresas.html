@@ -1,0 +1,101 @@
+<!DOCTYPE HTML>
+
+{% include 'pros/base.html' %}
+{% load staticfiles %}
+
+<html lang="pt-br">
+    <head>
+<!--CSS--------------------------------------------------------------------------------------------------------------->
+        {% block styles %}{% endblock styles %}
+<!-------------------------------------------------------------------------------------------------------------------->
+
+    </head>
+    <body>
+        <header class="page-header text-center color-link-empresa">
+            <h1><strong>RSA</strong> - Ordem de serviço</h1>
+        </header>
+        <div class="container">
+            <ul class="breadcrumb">
+                <li><a class="color-link-empresa" href="{% url 'pros:index' %}">Orçamentos</a>
+                    <span class="divider"></span></li>
+                <li class="active">Empresas</li>
+            </ul>
+            <div id="toolbar-empresa">
+                <a type="button" class="btn btn-success" href="{% url 'pros:cadastro_empresa' %}">
+                    <i class="glyphicon glyphicon-log-in"></i> Cadastrar Empresa
+                </a>
+            </div>
+            <table data-toggle="table"
+                data-toolbar="#toolbar-empresa"
+                data-search="true"
+                data-sort-name="nome_empresa"
+                data-sort-order="desc"
+                data-pagination="true"
+                data-show-footer="false"
+                data-page-list="[10, 25, 50, 100, ALL]"
+                data-minimum-count-columns="2"
+                data-show-columns="true">
+                <thead>
+                    <tr>
+                        <th data-field="nome_empresa" data-sortable="true">Empresa</th>
+                        <th data-field="cnpj" data-sortable="true">CNPJ</th>
+                        <th data-field="cidade" data-sortable="true">Cidade</th>
+                        <th data-field="insc_estadual" data-sortable="true">Inscrição Estadual</th>
+                        <th data-field="nome_social" data-sortable="true">Nome Social</th>
+                        <th data-field="estado" data-sortable="true">Estado</th>
+                        <th data-field="end" data-sortable="true">Endereço</th>
+                        <th data-field="cep" data-sortable="true">CEP</th>
+                        <th data-field="action" class="col-md-1" data-align="center">Ação</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for empresa in empresa_list %}
+                        <tr>
+                            <td class="text-overflow">
+                                <a class="color-link-empresa" href="{% url 'pros:clientes' empresa.id %}">
+                                    {{ empresa.nome_empresa }}
+                                </a>
+                            </td>
+                            <td class="text-overflow">{{ empresa.cnpj }}</td>
+                            <td class="text-overflow">{{ empresa.cidade }}</td>
+                            <td class="text-overflow">{{ empresa.insc_estadual }}</td>
+                            <td class="text-overflow">{{ empresa.nome_social }}</td>
+                            <td class="text-overflow">{{ empresa.estado }}</td>
+                            <td class="text-overflow">{{ empresa.end }}</td>
+                            <td class="text-overflow">{{ empresa.cep }}</td>
+                            <td class="col-md-1" data-align="center">
+                                <a class="edit ml10" href="{% url 'pros:update_empresa' empresa.id %}" title="Edit">
+                                    <i class="glyphicon glyphicon-edit color-link-empresa"></i>
+                                </a>
+                                <a class="remove ml10 remove-empresa" title="Remove" data-toggle="modal" href="#"
+                                   data-id="{{ empresa.id }}" data-name="{{ empresa.nome_empresa }}"
+                                   data-target="#empresa-del">
+                                    <i class="glyphicon glyphicon-remove color-delete"></i>
+                                </a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            <div class="modal fade" id="empresa-del" tabindex="-1" role="dialog" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header modal-header-del">
+                            <h4 class="modal-title">Alerta</h4>
+                        </div>
+                        <div class="modal-body">
+
+                        </div>
+                        <div class="modal-footer">
+                            <a type="button" class="btn btn-success btn-yes">Sim</a>
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Não</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+<!--JAVASCRIPT-------------------------------------------------------------------------------------------------------->
+        {% block scripts %}{% endblock scripts %}
+<!-------------------------------------------------------------------------------------------------------------------->
+    </body>
+</html>

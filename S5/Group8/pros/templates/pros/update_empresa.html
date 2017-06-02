@@ -1,0 +1,88 @@
+<!DOCTYPE HTML>
+
+{% load staticfiles %}
+
+<html lang="pt-br">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <title>RSA</title>
+
+        <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+        <link rel="stylesheet" href="{% static 'css/bootstrap-theme.min.css' %}">
+        <link rel="stylesheet" href="{% static 'css/pros.css' %}">
+
+        <script src="{% static 'js/jquery-3.2.1.min.js' %}"></script>
+        <script src="{% static 'js/jquery.mask.min.js' %}"></script>
+        <script src="{% static 'js/pros.js' %}"></script>
+
+    </head>
+    <body>
+        <header class="page-header text-center color-link-empresa">
+            <h1><strong>RSA</strong> - Ordem de serviço</h1>
+        </header>
+        <div class="container">
+            <ul class="breadcrumb">
+                <li><a class="color-link-empresa" href="{% url 'pros:index' %}">Orçamentos</a><span class="divider"></span></li>
+                <li><a class="color-link-empresa" href="{% url 'pros:empresas' %}">Empresas</a> <span class="divider"></span></li>
+                <li class="active">Cadastro de Empresa</li>
+            </ul>
+            <form action="{% url 'pros:update_empresa' pk %}" method="post">
+                {% csrf_token %}
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="form-group col">
+                            <label for="nome_empresa">Nome Empresa:</label>
+                            {{ form.nome_empresa }}
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group col">
+                            <label for="nome_social">Razão Social:</label>
+                            {{ form.nome_social }}
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-3">
+                        <div class="form-group">
+                            <label for="cnpj">CNPJ:</label>
+                            {{ form.cnpj }}
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+                         <div class="form-group">
+                            <label for="insc_estadual">Inscrição Estatual:</label>
+                            {{ form.insc_estadual }}
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <label for="cidade">Cidade:</label>
+                            {{ form.cidade }}
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+                         <div class="form-group">
+                            <label for="estado">Estado:</label>
+                            {{ form.estado }}
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="form-group">
+                            <label for="cep">CEP:</label>
+                            {{ form.cep }}
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="end">Endereço:</label>
+                    {{ form.end }}
+                </div>
+                <button type="submit" class="btn btn-success">Salvar</button>
+                <a href="{% url 'pros:empresas' %}" type="reset" class="btn btn-danger">Cancelar</a>
+            </form>
+        </div>
+    </body>
+</html>

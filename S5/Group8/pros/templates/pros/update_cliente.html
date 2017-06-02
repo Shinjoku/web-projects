@@ -1,0 +1,86 @@
+<!DOCTYPE HTML>
+
+{% load staticfiles %}
+
+<html lang="pt-br">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <title>RSA</title>
+
+        <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+        <link rel="stylesheet" href="{% static 'css/bootstrap-theme.min.css' %}">
+        <link rel="stylesheet" href="{% static 'css/pros.css' %}">
+
+        <script src="{% static 'js/jquery-3.2.1.min.js' %}"></script>
+        <script src="{% static 'js/jquery.mask.min.js' %}"></script>
+        <script src="{% static 'js/pros.js' %}"></script>
+
+    </head>
+    <body>
+        <header class="page-header text-center color-link-cliente">
+            <h1><strong>RSA</strong> - Ordem de serviço</h1>
+        </header>
+        <div class="container">
+            <ul class="breadcrumb">
+                <li><a class="color-link-cliente" href="{% url 'pros:index' %}">Orçamentos</a><span class="divider"></span></li>
+                <li><a class="color-link-cliente" href="{% url 'pros:empresas' %}">Empresas</a> <span class="divider"></span></li>
+                <li>
+                    <a class="color-link-cliente" href="{% url 'pros:clientes' empresa_id=empresa_id %}"> {{ nome_empresa }} </a>
+                    <span class="divider"></span>
+                </li>
+                <li class="active">Cadastro de Empresa</li>
+            </ul>
+            <form action="{% url 'pros:update_cliente' empresa_id pk %}" method="post">
+                {% csrf_token %}
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="form-group col">
+                            <label for="solicitante">Nome do Solicitante:</label>
+                            {{ form.solicitante }}
+                        </div>
+                    </div>
+                     <div class="col-sm-6">
+                        <div class="form-group col">
+                            <label for="responsavel">Nome do Responsável:</label>
+                            {{ form.responsavel }}
+                        </div>
+                    </div>
+                     <div class="col-sm-6">
+                        <div class="form-group col">
+                            <label for="cargo">Cargo do Cliente:</label>
+                            {{ form.cargo }}
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-2">
+                        <div class="form-group">
+                            <label for="tel">Telefone:</label>
+                            {{ form.tel }}
+                        </div>
+                    </div>
+                      <div class="col-sm-1">
+                        <div class="form-group">
+                            <label for="ramal">Ramal:</label>
+                            {{ form.ramal }}
+                        </div>
+                    </div>
+                    <div class="col-sm-2">
+                        <div class="form-group">
+                            <label for="cel">Celular:</label>
+                            {{ form.cel }}
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                         <div class="form-group">
+                            <label for="email">E-mail:</label>
+                            {{ form.email }}
+                        </div>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-success">Salvar</button>
+                <a href="{% url 'pros:clientes' empresa_id=empresa_id %}" type="reset" class="btn btn-danger">Cancelar</a>
+            </form>
+        </div>
+    </body>
+</html>
