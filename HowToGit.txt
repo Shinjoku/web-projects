@@ -8,3 +8,15 @@ Para atualizar os arquivos:
 	
 Caso a mensagem do commit esteja errada:
 	git commit --amend
+
+
+Criar um novo branch:
+	(?)
+	
+Ao criar um novo branch, é necessário executar um "git pull" para atualizara o repositório local
+
+Para trocar de branch:
+	git checkout <NOME_BRANCH>
+	
+Para trazer as mudanças de um branch para outro:
+	git merge <NOME_BRANCH>
