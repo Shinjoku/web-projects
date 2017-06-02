@@ -1,0 +1,10 @@
+Para pegar o projeto atualizado:
+  git pull
+	
+Para atualizar os arquivos:
+	git add (para adicionar ao Index o que será enviado)
+	git commit -m "MENSAGEM DO COMMIT" (Para especificar o que mudou)
+	git push (Para enviar a atualização)
+	
+Caso a mensagem do commit esteja errada:
+	git commit --amend
