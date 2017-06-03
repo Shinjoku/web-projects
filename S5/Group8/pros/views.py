@@ -115,12 +115,16 @@ def cadastro_ordem(request):
 
 
 def update_ordem(request, pk):
-    up_ordem = Ordem.objects.get(pk=pk)
+    up_ordem = Ordem.objects.get(id=pk)
+    empresa_list = Empresa.objects.all()
+    client_list = Cliente.objects.all()
+    
     form = CadastrarOrdem(request.POST or None, instance=up_ordem)
     if form.is_valid():
         form.save()
         return redirect('pros:index')
-    return render(request, 'pros/update_ordem.html', {'form': form, 'pk': pk})
+    return render(request, 'pros/update_ordem.html', {'form': form, 'pk': pk, 'client_list': client_list,
+                                                        'empresa_list': empresa_list})
 
 
 def delete_ordem(request, pk):
