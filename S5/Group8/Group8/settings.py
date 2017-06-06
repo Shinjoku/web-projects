@@ -25,7 +25,7 @@ SECRET_KEY = 'w%+izkq#ju3&zwgk0nw(42yuzkm1kb%^2m60h9aqa=#wid5%3o'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'web-projects-shinjoku.c9users.io']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'web-projects-shinjoku.c9users.io', 'lists-shinjoku.c9users.io']
 
 
 # Application definition

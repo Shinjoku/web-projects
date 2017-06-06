@@ -41,9 +41,10 @@
                 data-show-columns="true">
                 <thead>
                     <tr>
-                        <th data-field="num_ordem" data-sortable="true">ID</th>
-                        <th data-field="data" data-sortable="true">Empresa</th>
+                        <th data-field="num_ordem" class="col-md-1" data-align="center" data-sortable="true">Nº</th>
+                        <th data-field="empresa" data-sortable="true">Empresa</th>
                         <th data-field="executante" data-sortable="true">Executante</th>
+                        <th data-field="data" class="col-md-2" data-sortable="true">Data</th>
                         <th data-field="action" class="col-md-1" data-align="center">Ação</th>
                     </tr>
                 </thead>
@@ -53,6 +54,7 @@
                             <td class="text-overflow">{{ ordem.id }}</td>
                             <td class="text-overflow">{{ ordem.empresa }}</td>
                             <td class="text-overflow">{{ ordem.executante }}</td>
+                            <td class="text-overflow">{{ ordem.data }}</td>
                             <td class="col-md-1" data-align="center">
                                 <a class="edit ml10" href="update_ordem/{{ ordem.id }}" title="Edit">
                                     <i class="glyphicon glyphicon-edit color-link-ordem"></i>
