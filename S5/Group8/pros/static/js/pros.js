@@ -5,9 +5,9 @@ $(document).ready(function(){
     $('#tel').mask('(00) 0000-0000');
     $('#ramal').mask('0000');
     //$('#valor').mask('000.000.000,00', {reverse: true});
-    $('#data_aprovado').mask('00/00/0000');
+    $('#data_aprovacao').mask('00/00/0000');
     $('#data_liberacao').mask('00/00/0000');
-    $('#data_envio').mask('00/00/0000');
+    $('#data_envio_orcamento').mask('00/00/0000');
     $('input#cel').focusout(function(){
 		var phone, element;
 		element = $(this);
