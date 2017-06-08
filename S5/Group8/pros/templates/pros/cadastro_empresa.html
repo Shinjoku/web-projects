@@ -1,28 +1,17 @@
 <!DOCTYPE HTML>
 
+{% include 'pros/base.html' %}
 {% load staticfiles %}
 
 <html lang="pt-br">
 	<head>
-		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-		<title>RSA</title>
-		
     <!--CSS--------------------------------------------------------------------------------------------------------------->
-        <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
-        <link rel="stylesheet" href="{% static 'css/bootstrap-theme.min.css' %}">
-        <link rel="stylesheet" href="{% static 'css/bootstrap-table.min.css' %}">
-        <link rel="stylesheet" href="{% static 'css/pros.css' %}">
+		{% block styles %}{% endblock styles %}
     <!-------------------------------------------------------------------------------------------------------------------->
-		
 	</head>
 	<body>
 		<!-- Quando houver erros no forms: -->
-		{% if form.errors %}
-		<div class="alert alert-danger alert-dismissable fade-in">
-			<a href="" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-			<strong>Erro!</strong> O cadastro da empresa falhou! Reveja o seu CNPJ!
-		</div>
-		{% endif %}
+        {% block error %}{% endblock error %}
 		<!-- Fim do erro no forms -->
 		<header class="page-header text-center color-link-empresa">
 			<h1><strong>RSA</strong> - Ordem de serviço</h1>
@@ -91,14 +80,8 @@
 				<a href="{% url 'pros:empresas' %}" type="reset" class="btn btn-danger">Cancelar</a>
 			</form>
 		</div>
-		
-	    <!--JAVASCRIPT-------------------------------------------------------------------------------------------------------->
-	    <script async  src="{% static 'js/jquery-3.2.1.min.js' %}"></script>
-	    <script async  src="{% static 'js/jquery.mask.min.js' %}"></script>
-	    <script async  src="{% static 'js/bootstrap.min.js' %}"></script>
-	    <script async  src="{% static 'js/bootstrap-table.min.js' %}"></script>
-	    <script async  src="{% static 'js/bootstrap-table-pt-BR.min.js' %}"></script>
-	    <script async  src="{% static 'js/pros.js' %}"></script>
-	    <!-------------------------------------------------------------------------------------------------------------------->
+		<!--JAVASCRIPT-------------------------------------------------------------------------------------------------------->
+		{% block scripts %}{% endblock scripts %}
+		<!-------------------------------------------------------------------------------------------------------------------->
 	</body>
 </html>

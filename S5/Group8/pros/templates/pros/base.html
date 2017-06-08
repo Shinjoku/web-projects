@@ -21,4 +21,13 @@
         <script src="{% static 'js/bootstrap-table-pt-BR.min.js' %}"></script>
         <script src="{% static 'js/pros.js' %}"></script>
         {% endblock scripts %}
+        
+        {% block error %}
+        {% if form.errors %}
+            <div class="alert alert-danger fade in">
+              <a href="#" class="close" data-hide="alert" aria-label="close">&times;</a>
+              <strong>Falha no cadastro!</strong></br>Verifique novamente os campos: {{ form.errors }}
+            </div>
+        {% endif %}
+        {% endblock error %}
 </html>

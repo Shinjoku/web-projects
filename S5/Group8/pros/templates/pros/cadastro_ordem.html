@@ -1,31 +1,20 @@
 <!DOCTYPE HTML>
 
+{% include 'pros/base.html' %}
 {% load staticfiles %}
 {% load app_filters %}
 
 <html lang="pt-br">
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-        <title>RSA</title>
-
-        <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
-        <link rel="stylesheet" href="{% static 'css/bootstrap-theme.min.css' %}">
-        <link rel="stylesheet" href="{% static 'css/pros.css' %}">
-
-        <script src="{% static 'js/jquery-3.2.1.min.js' %}"></script>
-        <script src="{% static 'js/jquery.mask.min.js' %}"></script>
-        <script src="{% static 'js/pros.js' %}"></script>
-
+    <!--CSS--------------------------------------------------------------------------------------------------------------->
+		{% block styles %}{% endblock styles %}
+    <!-------------------------------------------------------------------------------------------------------------------->
     </head>
     <body>
-        <!-- Quando houver erros no forms: -->
-		{% if form.errors %}
-			{% for errors in form.errors %}
-			   {{ errors }}
-			{% endfor %}
-		{% endif %}
+		<!-- Quando houver erros no forms: -->
+        {% block error %}{% endblock error %}
 		<!-- Fim do erro no forms -->
-        <header class="page-header text-center color-link-empresa">
+        <header class="page-header text-center color-link-ordem">
             <h1><strong>RSA</strong> - Solicitação de serviço</h1>
         </header>
         <div class="container">
@@ -54,7 +43,7 @@
                             <select name="select2" id="select2" class="form-control" disabled="true">
                                     <option></option>
                                 {% for cliente in client_list %}
-                                    <option value="{{ cliente.empresa.id }}"> {{ cliente.solicitante }} </option>
+                                    <option value="{{ cliente.solicitante }}" name="{{ cliente.empresa.id }}"> {{ cliente.solicitante }} </option>
                                 {% endfor %}
                             </select>
                         </div>
@@ -87,7 +76,6 @@
                     </div>
                 </div>
                 <div class="row">
-                     
                     <div class="col-sm-3">
                         <div class="form-group">
                             <label for="data_envio_orcamento">Data de Envio do Orçamento:</label>
@@ -112,7 +100,6 @@
                             {{ form.valor }}
                         </div>
                     </div>
-                    
                 </div>
                 <div class="row">
                      <div class="col-sm-4">
@@ -128,8 +115,6 @@
                             {{ form.executante }}
                         </div>
                     </div>
-                   
-                   
                 </div>
                 <div class="row">
                      <div class="col-sm-4">
@@ -155,6 +140,9 @@
                 <a href="{% url 'pros:index' %}" type="reset" class="btn btn-danger">Cancelar</a>
             </form>
         </div>
+		<!--JAVASCRIPT-------------------------------------------------------------------------------------------------------->
+		{% block scripts %}{% endblock scripts %}
+		<!-------------------------------------------------------------------------------------------------------------------->
     </body>
     <footer><br></footer>
 </html>
