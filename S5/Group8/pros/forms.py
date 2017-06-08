@@ -37,21 +37,6 @@ class CadastrarCliente(forms.ModelForm):
 class CadastrarOrdem(forms.ModelForm):
     empresa = forms.ModelChoiceField(queryset=Empresa.objects.all(), empty_label="Selecione uma Empresa",
                                      widget=forms.Select(attrs={'class': 'form-control', 'id': 'select1'}))
-<<<<<<< HEAD
-    cliente = forms.CharField(max_length=100)
-    data_envio_orcamento = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control', 'id': 'data_envio_orcamento'}))
-    data_aprovacao = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control', 'id': 'data_aprovacao'}))
-    descricao = forms.CharField(widget=forms.Textarea(attrs={'class': 'form-control', 'id': 'descricao'}))
-    acessorios = forms.CharField(widget=forms.Textarea(attrs={'class': 'form-control', 'id': 'acessorios'}))
-    observacoes = forms.CharField(widget=forms.Textarea(attrs={'class': 'form-control', 'id': 'observacoes'}))
-    num_pedido = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control', 'id': 'num_pedido'}))
-    valor = forms.IntegerField(widget=forms.TextInput(attrs={'class': 'form-control', 'id': 'valor'}))
-    executante = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control', 'id': 'executante'}))
-    data_liberacao = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control', 'id': 'data_liberacao'}))
-    num_nf_entrada = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control', 'id': 'num_nf_entrada'}))
-    num_nf_servico = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control', 'id': 'num_nf_servico'}))
-    num_nf_vendas = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control', 'id': 'num_nf_vendas'}))
-=======
     data_envio_orcamento = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control', 'id': 'data_envio_orcamento'}), required=False)
     data_aprovacao = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control', 'id': 'data_aprovacao'}), required=False)
     descricao = forms.CharField(widget=forms.Textarea(attrs={'class': 'form-control', 'id': 'descricao'}), required=False)
@@ -64,7 +49,6 @@ class CadastrarOrdem(forms.ModelForm):
     num_nf_entrada = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control', 'id': 'num_nf_entrada'}), required=False)
     num_nf_servico = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control', 'id': 'num_nf_servico'}), required=False)
     num_nf_vendas = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control', 'id': 'num_nf_vendas'}), required=False)
->>>>>>> cliente
     num_nf_devolucao = forms.CharField(
         widget=forms.TextInput(attrs={'class': 'form-control', 'id': 'num_nf_devolucao'}), required=False)
     responsavel_preenchimento = forms.CharField(
@@ -72,10 +56,6 @@ class CadastrarOrdem(forms.ModelForm):
 
     class Meta:
         model = Ordem
-<<<<<<< HEAD
-        fields = ('empresa', 'cliente', 'num_nf_entrada', 'descricao', 'acessorios', 'observacoes', 'data_envio_orcamento', 'data_aprovacao',
-                  'num_pedido', 'valor', 'executante', 'data_liberacao', 'num_nf_servico', 'num_nf_vendas',
-                  'num_nf_devolucao', 'responsavel_preenchimento')
-=======
-        fields = ('empresa', 'num_nf_entrada')
->>>>>>> cliente
+        fields = ('empresa', 'data_envio_orcamento', 'data_aprovacao', 'descricao', 'acessorios', 'observacoes', 'num_pedido', 'valor', 
+                                                        'executante', 'data_liberacao', 'num_nf_entrada', 'num_nf_servico',
+                                                        'num_nf_vendas', 'num_nf_devolucao', 'responsavel_preenchimento',)

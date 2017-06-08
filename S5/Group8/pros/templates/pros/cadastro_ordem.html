@@ -14,7 +14,7 @@
 		<!-- Quando houver erros no forms: -->
         {% block error %}{% endblock error %}
 		<!-- Fim do erro no forms -->
-        <header class="page-header text-center color-link-empresa">
+        <header class="page-header text-center color-link-ordem">
             <h1><strong>RSA</strong> - Solicitação de serviço</h1>
         </header>
         <div class="container">
@@ -43,11 +43,7 @@
                             <select name="select2" id="select2" class="form-control" disabled="true">
                                     <option></option>
                                 {% for cliente in client_list %}
-<<<<<<< HEAD
-                                    <option value="{{ cliente.empresa.nome }}"> {{ cliente.solicitante }} </option>
-=======
                                     <option value="{{ cliente.solicitante }}" name="{{ cliente.empresa.id }}"> {{ cliente.solicitante }} </option>
->>>>>>> cliente
                                 {% endfor %}
                             </select>
                         </div>
@@ -80,7 +76,6 @@
                     </div>
                 </div>
                 <div class="row">
-                     
                     <div class="col-sm-3">
                         <div class="form-group">
                             <label for="data_envio_orcamento">Data de Envio do Orçamento:</label>
@@ -105,7 +100,6 @@
                             {{ form.valor }}
                         </div>
                     </div>
-                    
                 </div>
                 <div class="row">
                      <div class="col-sm-4">
@@ -121,8 +115,6 @@
                             {{ form.executante }}
                         </div>
                     </div>
-                   
-                   
                 </div>
                 <div class="row">
                      <div class="col-sm-4">

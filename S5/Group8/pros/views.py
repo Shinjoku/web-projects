@@ -91,6 +91,7 @@ def update_cliente(request, empresa_id, pk):
 
 
 # Ordens:----------------------------------------------------------------------------------------------
+
 def ordem(request):
     ordem_list = Ordem.objects.order_by('id')
     return render(request, 'pros/index.html', {'ordem_list': ordem_list})
@@ -120,7 +121,10 @@ def update_ordem(request, pk):
     empresa_list = Empresa.objects.all()
     client_list = Cliente.objects.all()
     
+    print (up_ordem.id)
+    
     form = CadastrarOrdem(request.POST or None, instance=up_ordem)
+    form.id = up_ordem.id
     if form.is_valid():
         form.save()
         return redirect('pros:index')
