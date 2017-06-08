@@ -36,27 +36,30 @@ $(document).ready(function(){
         $('a.btn-yes').attr('href', 'delete_cliente/' + id + '/');
     });
     
-    $('.remove-ordem').click(function(){
-	    $('div.modal-body').empty();
-	    var id = $(this).data('id')
-	    var num = $(this).data('num_pedido')
-        $('div.modal-body').append('Deseja apagar a ordem: <strong>' + num + '</strong>?');
-        $('a.btn-yes').attr('href', 'delete_ordem/' + id + '/');
-    });
+  $('.remove-ordem').click(function(){
+    $('div.modal-body').empty();
+    var id = $(this).data('id')
+    var num = $(this).data('num_pedido')
+      $('div.modal-body').append('Deseja apagar a ordem: <strong>' + num + '</strong>?');
+      $('a.btn-yes').attr('href', 'delete_ordem/' + id + '/');
+  });
 
-    $("#select1").change(function() {
-      if ($(this).data('options') === undefined) {
-        /*Taking an array of all options-2 and kind of embedding it on the select1*/
-        $(this).data('options', $('#select2 option').clone());
-      }
-      var id = $(this).val();
-      var options = $(this).data('options').filter('[value=' + id + ']');
-      $('#select2').html(options);
-    });
+  $("#select1").change(function() {
+    if ($(this).data('options') === undefined) {
+      /*Taking an array of all options-2 and kind of embedding it on the select1*/
+      $(this).data('options', $('#select2 option').clone());
+    }
+    var id = $(this).val();
+    var options = $(this).data('options').filter('[value=' + id + ']');
+    $('#select2').html(options);
+  });
 
-    $('#select1').change(function() {
-        $('#select2').prop('disabled', false);
-    });
+  $('#select1').change(function() {
+      $('#select2').prop('disabled', false);
+  });
 
+  $('[data-hide]').on("click", function(){
+      $("." + $(this).attr("data-hide")).hide();3
+  });
 });
 

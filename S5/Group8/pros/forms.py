@@ -37,6 +37,7 @@ class CadastrarCliente(forms.ModelForm):
 class CadastrarOrdem(forms.ModelForm):
     empresa = forms.ModelChoiceField(queryset=Empresa.objects.all(), empty_label="Selecione uma Empresa",
                                      widget=forms.Select(attrs={'class': 'form-control', 'id': 'select1'}))
+    cliente = forms.CharField(max_length=100)
     data_envio_orcamento = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control', 'id': 'data_envio_orcamento'}))
     data_aprovacao = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control', 'id': 'data_aprovacao'}))
     descricao = forms.CharField(widget=forms.Textarea(attrs={'class': 'form-control', 'id': 'descricao'}))
@@ -56,6 +57,6 @@ class CadastrarOrdem(forms.ModelForm):
 
     class Meta:
         model = Ordem
-        fields = ('empresa', 'num_nf_entrada', 'descricao', 'acessorios', 'observacoes', 'data_envio_orcamento', 'data_aprovacao',
+        fields = ('empresa', 'cliente', 'num_nf_entrada', 'descricao', 'acessorios', 'observacoes', 'data_envio_orcamento', 'data_aprovacao',
                   'num_pedido', 'valor', 'executante', 'data_liberacao', 'num_nf_servico', 'num_nf_vendas',
                   'num_nf_devolucao', 'responsavel_preenchimento')
