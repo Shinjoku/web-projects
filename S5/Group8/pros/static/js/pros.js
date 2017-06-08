@@ -50,9 +50,13 @@ $(document).ready(function(){
         $(this).data('options', $('#select2 option').clone());
       }
       var id = $(this).val();
-      var options = $(this).data('options').filter('[value=' + id + ']');
+      var options = $(this).data('options').filter('[name=' + id + ']');
       $('#select2').html(options);
     });
+
+//    $("#select1").change(function() {
+//      alert($(this).data('options', ))
+//    });
 
     $('#select1').change(function() {
         $('#select2').prop('disabled', false);

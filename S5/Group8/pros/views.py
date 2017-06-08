@@ -104,6 +104,7 @@ def cadastro_ordem(request):
         form = CadastrarOrdem(request.POST)
         if form.is_valid():
             form = form.save(commit=False)
+            form.cliente = str(request.POST['select2'])
             form.save()
             return redirect('pros:index')
         else:

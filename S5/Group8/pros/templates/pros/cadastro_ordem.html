@@ -54,7 +54,7 @@
                             <select name="select2" id="select2" class="form-control" disabled="true">
                                     <option></option>
                                 {% for cliente in client_list %}
-                                    <option value="{{ cliente.empresa.id }}"> {{ cliente.solicitante }} </option>
+                                    <option value="{{ cliente.solicitante }}" name="{{ cliente.empresa.id }}"> {{ cliente.solicitante }} </option>
                                 {% endfor %}
                             </select>
                         </div>
