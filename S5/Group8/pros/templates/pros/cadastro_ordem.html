@@ -43,7 +43,11 @@
                             <select name="select2" id="select2" class="form-control" disabled="true">
                                     <option></option>
                                 {% for cliente in client_list %}
+<<<<<<< HEAD
                                     <option value="{{ cliente.empresa.nome }}"> {{ cliente.solicitante }} </option>
+=======
+                                    <option value="{{ cliente.solicitante }}" name="{{ cliente.empresa.id }}"> {{ cliente.solicitante }} </option>
+>>>>>>> cliente
                                 {% endfor %}
                             </select>
                         </div>
