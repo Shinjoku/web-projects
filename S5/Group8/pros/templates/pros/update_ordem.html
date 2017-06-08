@@ -22,7 +22,7 @@
                 <li><a class="color-link-orcamento" href="{% url 'pros:index' %}">Orçamentos</a><span class="divider"></span></li>
                 <li class="active">Cadastro de Solicitação de Serviço</li>
             </ul>
-            <form action="{% url 'pros:cadastro_ordem' %}" method="post">
+            <form action="{% url 'pros:update_ordem' pk %}" method="post">
                 {% csrf_token %}
                 <div class="row">
                     <div class="col-sm-2">

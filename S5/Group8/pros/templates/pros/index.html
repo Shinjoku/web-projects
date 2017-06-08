@@ -45,7 +45,6 @@
                         <th data-field="empresa" data-sortable="true">Empresa</th>
                         <th data-field="solicitante" data-sortable="true">Solicitante</th>
                         <th data-field="executante" data-sortable="true">Executante</th>
-                        <th data-field="cliente" data-sortable="true">Cliente</th>
                         <th data-field="data" class="col-md-2" data-sortable="true">Data</th>
                         <th data-field="action" class="col-md-1" data-align="center">Ação</th>
                     </tr>
@@ -57,14 +56,13 @@
                             <td class="text-overflow">{{ ordem.empresa }}</td>
                             <td class="text-overflow">{{ ordem.cliente }}</td>
                             <td class="text-overflow">{{ ordem.executante }}</td>
-                            <td class="text-overflow">{{ ordem.cliente }}</td>
                             <td class="text-overflow">{{ ordem.data }}</td>
                             <td class="col-md-1" data-align="center">
                                 <a class="edit ml10" href="update_ordem/{{ ordem.id }}" title="Edit">
                                     <i class="glyphicon glyphicon-edit color-link-ordem"></i>
                                 </a>
                                 <a class="remove ml10 remove-ordem" title="Remove" data-toggle="modal" href="#"
-                                   data-id="{{ ordem.id }}" data-num_pedido="{{ ordem.id }}"
+                                   data-id="{{ ordem.id }}" data-num_pedido="{{ ordem.num_pedido }}"
                                    data-target="#ordem-del">
                                     <i class="glyphicon glyphicon-remove color-delete"></i>
                                 </a>

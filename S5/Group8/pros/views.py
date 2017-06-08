@@ -124,8 +124,9 @@ def update_ordem(request, pk):
     print (up_ordem.id)
     
     form = CadastrarOrdem(request.POST or None, instance=up_ordem)
-    form.id = up_ordem.id
     if form.is_valid():
+        form = form.save(commit=False)
+        form.cliente = str(request.POST['select2'])
         form.save()
         return redirect('pros:index')
     return render(request, 'pros/update_ordem.html', {'form': form, 'pk': pk, 'client_list': client_list,

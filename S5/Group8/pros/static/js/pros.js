@@ -40,7 +40,7 @@ $(document).ready(function(){
     $('div.modal-body').empty();
     var id = $(this).data('id')
     var num = $(this).data('num_pedido')
-      $('div.modal-body').append('Deseja apagar a ordem: <strong>' + num + '</strong>?');
+      $('div.modal-body').append('Deseja apagar a ordem: <strong>' + id + '</strong>?');
       $('a.btn-yes').attr('href', 'delete_ordem/' + id + '/');
   });
 
