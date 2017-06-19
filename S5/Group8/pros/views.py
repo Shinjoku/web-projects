@@ -136,3 +136,8 @@ def update_ordem(request, pk):
 def delete_ordem(request, pk):
     Ordem.objects.filter(id=pk).delete()
     return redirect('pros:index')
+
+def imprimir_ordem(request, pk):
+    orçamento = Ordem.objects.get(pk=pk)
+
+    return render(request, 'pros/imprimir_ordem.html', {'orçamento': orçamento})
