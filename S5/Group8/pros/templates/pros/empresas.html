@@ -1,16 +1,9 @@
 <!DOCTYPE HTML>
 
-{% include 'pros/base.html' %}
-{% load staticfiles %}
+{% extends 'pros/base.html' %}
 
 <html lang="pt-br">
-    <head>
-<!--CSS--------------------------------------------------------------------------------------------------------------->
-        {% block styles %}{% endblock styles %}
-<!-------------------------------------------------------------------------------------------------------------------->
-
-    </head>
-    <body>
+    {% block body %}
         <header class="page-header text-center color-link-empresa">
             <h1><strong>RSA</strong> - Ordem de serviço</h1>
         </header>
@@ -93,8 +86,5 @@
                 </div>
             </div>
         </div>
-<!--JAVASCRIPT-------------------------------------------------------------------------------------------------------->
-        {% block scripts %}{% endblock scripts %}
-<!-------------------------------------------------------------------------------------------------------------------->
-    </body>
+    {% endblock body %}
 </html>

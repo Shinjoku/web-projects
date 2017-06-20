@@ -1,18 +1,9 @@
 <!DOCTYPE HTML>
 
-{% include 'pros/base.html' %}
-{% load staticfiles %}
+{% extends 'pros/base.html' %}
 
 <html lang="pt-br">
-    <head>
-    <!--CSS--------------------------------------------------------------------------------------------------------------->
-		{% block styles %}{% endblock styles %}
-    <!-------------------------------------------------------------------------------------------------------------------->
-    </head>
-    <body>
-        <!-- Quando houver erros no forms: -->
-        {% block error %}{% endblock error %}
-		<!-- Fim do erro no forms -->
+    {% block body %}
         <header class="page-header text-center color-link-cliente">
             <h1><strong>RSA</strong> - Ordem de serviço</h1>
         </header>
@@ -78,8 +69,5 @@
                 <a href="{% url 'pros:clientes' empresa_id=empresa_id %}" type="reset" class="btn btn-danger">Cancelar</a>
             </form>
         </div>
-		<!--JAVASCRIPT-------------------------------------------------------------------------------------------------------->
-		{% block scripts %}{% endblock scripts %}
-		<!-------------------------------------------------------------------------------------------------------------------->
-    </body>
+    {% endblock body %}
 </html>

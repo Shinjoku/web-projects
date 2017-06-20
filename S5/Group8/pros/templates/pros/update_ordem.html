@@ -1,19 +1,9 @@
 <!DOCTYPE HTML>
 
-{% include 'pros/base.html' %}
-{% load staticfiles %}
-{% load app_filters %}
+{% extends 'pros/base.html' %}
 
 <html lang="pt-br">
-    <head>
-    <!--CSS--------------------------------------------------------------------------------------------------------------->
-		{% block styles %}{% endblock styles %}
-    <!-------------------------------------------------------------------------------------------------------------------->
-    </head>
-    <body>
-		<!-- Quando houver erros no forms: -->
-        {% block error %}{% endblock error %}
-		<!-- Fim do erro no forms -->
+    {% block body %}
         <header class="page-header text-center color-link-ordem">
             <h1><strong>RSA</strong> - Solicitação de serviço</h1>
         </header>
@@ -108,15 +98,12 @@
                             {{ form.responsavel_preenchimento }}
                          </div>
                     </div>
-
                     <div class="col-sm-4">
                         <div class="form-group">
                             <label for="executante">Executante:</label>
                             {{ form.executante }}
                         </div>
                     </div>
-
-
                 </div>
                 <div class="row">
                      <div class="col-sm-4">
@@ -142,9 +129,5 @@
                 <a href="{% url 'pros:index' %}" type="reset" class="btn btn-danger">Cancelar</a>
             </form>
         </div>
-		<!--JAVASCRIPT-------------------------------------------------------------------------------------------------------->
-		{% block scripts %}{% endblock scripts %}
-		<!-------------------------------------------------------------------------------------------------------------------->
-    </body>
-    <footer><br></footer>
+    {% endblock body %}
 </html>
