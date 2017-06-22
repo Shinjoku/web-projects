@@ -55,6 +55,9 @@
                                 <a class="edit ml10" href="update_ordem/{{ ordem.id }}" title="Edit">
                                     <i class="glyphicon glyphicon-edit color-link-ordem"></i>
                                 </a>
+                                <a class="imp m110 imprimir" href="imprimir_ordem/{{ ordem.id }}" title="Imprimir">
+                                    <i class="glyphicon glyphicon-print"></i>
+                                </a>
                                 <a class="remove ml10 remove-ordem" title="Remove" data-toggle="modal" href="#"
                                    data-id="{{ ordem.id }}" data-num_pedido="{{ ordem.num_pedido }}"
                                    data-target="#ordem-del">

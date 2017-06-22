@@ -9,6 +9,7 @@ urlpatterns = [
     url(r'^cadastro_ordem/$', views.cadastro_ordem, name='cadastro_ordem'),
     url(r'^update_ordem/(?P<pk>[0-9]+)/$', views.update_ordem, name='update_ordem'),
     url(r'^delete_ordem/(?P<pk>[0-9]+)/$', views.delete_ordem, name='delete_ordem'),
+    url(r'^imprimir_ordem/(?P<pk>[0-9]+)/$', views.imprimir_ordem, name='imprimir_ordem'),
     url(r'^empresas/$', views.empresas, name='empresas'),
     url(r'^empresas/delete_empresa/(\d+)/$', views.delete_empresa, name='delete_empresa'),
     url(r'^empresas/(?P<empresa_id>[0-9]+)/$', views.clientes, name='clientes'),

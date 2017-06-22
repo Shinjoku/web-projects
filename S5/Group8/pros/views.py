@@ -102,7 +102,7 @@ def cadastro_ordem(request):
     client_list = Cliente.objects.all()
 
     if request.method == 'POST':
-        form = CadastrarOrdem(request.POST)
+        form = CadastrarOrdem(request.POST, request.FILES or None)
         if form.is_valid():
             form = form.save(commit=False)
             form.cliente = str(request.POST['select2'])
@@ -121,9 +121,7 @@ def update_ordem(request, pk):
     empresa_list = Empresa.objects.all()
     client_list = Cliente.objects.all()
     
-    print (up_ordem.id)
-    
-    form = CadastrarOrdem(request.POST or None, instance=up_ordem)
+    form = CadastrarOrdem(request.POST or None, request.FILES or None, instance=up_ordem)
     if form.is_valid():
         form = form.save(commit=False)
         form.cliente = str(request.POST['select2'])
@@ -136,3 +134,10 @@ def update_ordem(request, pk):
 def delete_ordem(request, pk):
     Ordem.objects.filter(id=pk).delete()
     return redirect('pros:index')
+    
+def imprimir_ordem(request, pk):
+    orcamento = Ordem.objects.get(pk=pk)
+    cliente_imp = orcamento.cliente
+
+    return render(request, 'pros/imprimir_ordem.html', {'orcamento': orcamento, 'cliente_imp': cliente_imp})
+    

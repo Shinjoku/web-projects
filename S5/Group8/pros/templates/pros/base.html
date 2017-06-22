@@ -20,18 +20,11 @@
 
 {% block body %}
 	<body>
-		{% if form.errors %}
-			<div class="alert alert-danger fade in">
-			  <a href="#" class="close" data-hide="alert" aria-label="close">&times;</a>
-			  <strong>Falha no cadastro!</strong></br>Verifique novamente os campos: {{ form.errors }}
-			</div>
-		{% endif %}
 		{{ block.super }}
 	</body>
 {% endblock body %}
 <footer>
-	<div align="right">
-		Desenvolvido por L Broz. <img src="/pros/images/logo.png" alt="logo" style="width:25px;height:25px;">
+	<div style="margin-left:70%">
+		<font size="1">Desenvolvido por L Broz</font> <img src="{% static 'images/logo-lbroz.png' %}" alt="logo" style="width:32px;height:32px;">
 	</div>
 </footer>
-

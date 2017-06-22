@@ -3,133 +3,143 @@
 {% extends "pros/base.html" %}
 
 <html lang="pt-br">
-    {% block body %}
-        <header class="page-header text-center color-link-ordem">
-            <h1><strong>RSA</strong> - Solicitação de serviço</h1>
-        </header>
-        <div class="container">
-            <ul class="breadcrumb">
-                <li><a class="color-link-orcamento" href="{% url 'pros:index' %}">Orçamentos</a><span class="divider"></span></li>
-                <li class="active">Cadastro de Solicitação de Serviço</li>
-            </ul>
-            <form action="{% url 'pros:cadastro_ordem' %}" method="post">
-                {% csrf_token %}
-                <div class="row">
-                    <div class="col-sm-2">
-                         <div class="form-group">
-                            <label for="num_pedido">Nº do pedido:</label>
-                            {{ form.num_pedido }}
-                        </div>
-                    </div>
-                    <div class="col-sm-4">
-                        <div class="form-group">
-                            <label for="empresa">Empresa:</br></label>
-                            {{ form.empresa }}
-                        </div>
-                    </div>
-                    <div class="col-sm-4">
-                        <div class="form-group">
-                            <label for="cliente">Cliente:</label>
-                            <select name="select2" id="select2" class="form-control" disabled="true">
-                                    <option></option>
-                                {% for cliente in client_list %}
-                                    <option value="{{ cliente.solicitante }}" name="{{ cliente.empresa.id }}"> {{ cliente.solicitante }} </option>
-                                {% endfor %}
-                            </select>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-sm-3">
-                        <div class="form-group">
-                            <label for="num_nf_entrada">Nº Nota Fiscal de Entrada:</label>
-                            {{ form.num_nf_entrada }}
-                        </div>
-                    </div>
-                     <div class="col-sm-3">
-                        <div class="form-group">
-                            <label for="num_nf_servico">Nº Nota Fiscal de Serviços:</label>
-                            {{ form.num_nf_servico }}
-                        </div>
-                    </div>
-                    <div class="col-sm-3">
-                        <div class="form-group">
-                            <label for="num_nf_vendas">Nº Nota Fiscal de Vendas:</label>
-                            {{ form.num_nf_vendas }}
-                        </div>
-                    </div>
-                     <div class="col-sm-3">
-                        <div class="form-group">
-                            <label for="num_nf_devolucao">Nº Nota Fiscal de Devolução:</label>
-                            {{ form.num_nf_devolucao }}
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-sm-3">
-                        <div class="form-group">
-                            <label for="data_envio_orcamento">Data de Envio do Orçamento:</label>
-                            {{ form.data_envio_orcamento }}
-                        </div>
-                    </div>
-                    <div class="col-sm-2">
-                        <div class="form-group">
-                            <label for="data_aprovacao">Data de Aprovação:</label>
-                           {{ form.data_aprovacao }}
-                         </div>
-                    </div>
-                    <div class="col-sm-2">
-                        <div class="form-group">
-                            <label for="data_liberacao">Data de Liberação:</label>
-                            {{ form.data_liberacao }}
-                        </div>
-                    </div>
-                     <div class="col-sm-2">
-                        <div class="form-group">
-                            <label for="valor">Valor:</label>
-                            {{ form.valor }}
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                     <div class="col-sm-4">
-                        <div class="form-group">
-                            <label for="responsavel_preenchimento">Responsável pelo Preenchimento:</label>
-                            {{ form.responsavel_preenchimento }}
-                         </div>
-                    </div>
-                    
-                    <div class="col-sm-4">
-                        <div class="form-group">
-                            <label for="executante">Executante:</label>
-                            {{ form.executante }}
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                     <div class="col-sm-4">
-                        <div class="form-group">
-                            <label for="acessorios" style="width:500px;">Acessórios:</label>
-                            {{ form.acessorios }}
-                        </div>
-                    </div>
-                    <div class="col-sm-4">
-                         <div class="form-group">
-                            <label class="obs-tam" for="observacoes">Observações:</label>
-                            {{ form.observacoes }}
-                        </div>
-                    </div>
-                    <div class="col-sm-4">
-                         <div class="form-group">
-                            <label for="descricao">Descrição:</label>
-                            {{ form.descricao }}
-                        </div>
-                    </div>
-                </div>
-                <button type="submit" class="btn btn-success">Cadastrar</button>
-                <a href="{% url 'pros:index' %}" type="reset" class="btn btn-danger">Cancelar</a>
-            </form>
-        </div>
-
-    {% endblock body %}
+	{% block body %}
+		{% if form.errors %}
+			<div class="alert alert-danger fade in">
+			  <a href="#" class="close" data-hide="alert" aria-label="close">&times;</a>
+			  <strong>Falha no cadastro!</strong></br>Verifique novamente os campos: {{ form.errors }}
+			</div>
+		{% endif %}
+		<header class="page-header text-center color-link-ordem">
+			<h1><strong>RSA</strong> - Solicitação de serviço</h1>
+		</header>
+		<div class="container">
+			<ul class="breadcrumb">
+				<li><a class="color-link-orcamento" href="{% url 'pros:index' %}">Orçamentos</a><span class="divider"></span></li>
+				<li class="active">Cadastro de Solicitação de Serviço</li>
+			</ul>
+			<form action="{% url 'pros:cadastro_ordem' %}" method="post" enctype="multipart/form-data">
+				{% csrf_token %}
+				<div class="row">
+					<div class="col-sm-2">
+						 <div class="form-group">
+							<label for="num_pedido">Nº do pedido:</label>
+							{{ form.num_pedido }}
+						</div>
+					</div>
+					<div class="col-sm-4">
+						<div class="form-group">
+							<label for="empresa">Empresa:</br></label>
+							{{ form.empresa }}
+						</div>
+					</div>
+					<div class="col-sm-4">
+						<div class="form-group">
+							<label for="cliente">Cliente:</label>
+							<select name="select2" id="select2" class="form-control" disabled="true">
+									<option></option>
+								{% for cliente in client_list %}
+									<option value="{{ cliente.solicitante }}" name="{{ cliente.empresa.id }}"> {{ cliente.solicitante }} </option>
+								{% endfor %}
+							</select>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-sm-3">
+						<div class="form-group">
+							<label for="num_nf_entrada">Nº Nota Fiscal de Entrada:</label>
+							{{ form.num_nf_entrada }}
+						</div>
+					</div>
+					 <div class="col-sm-3">
+						<div class="form-group">
+							<label for="num_nf_servico">Nº Nota Fiscal de Serviços:</label>
+							{{ form.num_nf_servico }}
+						</div>
+					</div>
+					<div class="col-sm-3">
+						<div class="form-group">
+							<label for="num_nf_vendas">Nº Nota Fiscal de Vendas:</label>
+							{{ form.num_nf_vendas }}
+						</div>
+					</div>
+					 <div class="col-sm-3">
+						<div class="form-group">
+							<label for="num_nf_devolucao">Nº Nota Fiscal de Devolução:</label>
+							{{ form.num_nf_devolucao }}
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-sm-3">
+						<div class="form-group">
+							<label for="data_envio_orcamento">Data de Envio do Orçamento:</label>
+							{{ form.data_envio_orcamento }}
+						</div>
+					</div>
+					<div class="col-sm-2">
+						<div class="form-group">
+							<label for="data_aprovacao">Data de Aprovação:</label>
+						   {{ form.data_aprovacao }}
+						 </div>
+					</div>
+					<div class="col-sm-2">
+						<div class="form-group">
+							<label for="data_liberacao">Data de Liberação:</label>
+							{{ form.data_liberacao }}
+						</div>
+					</div>
+					 <div class="col-sm-2">
+						<div class="form-group">
+							<label for="valor">Valor:</label>
+							{{ form.valor }}
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					 <div class="col-sm-4">
+						<div class="form-group">
+							<label for="responsavel_preenchimento">Responsável pelo Preenchimento:</label>
+							{{ form.responsavel_preenchimento }}
+						</div>
+					</div>
+					<div class="col-sm-4">
+						<div class="form-group">
+							<label for="executante">Executante:</label>
+							{{ form.executante }}
+						</div>
+					</div>
+					<div class="col-sm-4">
+						<div class="form-group">
+							<label for="arquivo">Arquivo:</label>
+							{{ form.arquivo }}
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					 <div class="col-sm-4">
+						<div class="form-group">
+							<label for="acessorios" style="width:500px;">Acessórios:</label>
+							{{ form.acessorios }}
+						</div>
+					</div>
+					<div class="col-sm-4">
+						 <div class="form-group">
+							<label class="obs-tam" for="observacoes">Observações:</label>
+							{{ form.observacoes }}
+						</div>
+					</div>
+					<div class="col-sm-4">
+						 <div class="form-group">
+							<label for="descricao">Descrição:</label>
+							{{ form.descricao }}
+						</div>
+					</div>
+				</div>
+				<button type="submit" class="btn btn-success">Cadastrar</button>
+				<a href="{% url 'pros:index' %}" type="reset" class="btn btn-danger">Cancelar</a>
+			</form>
+		</div>
+	{% endblock body %}
 </html>

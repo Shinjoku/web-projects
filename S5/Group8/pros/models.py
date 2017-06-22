@@ -37,6 +37,7 @@ class Ordem(models.Model):
     # O id está implícito na criação da tabela e será usado como número da ordem serviço;
     empresa = models.CharField(max_length=200)
     cliente = models.CharField(max_length=200)
+    arquivo = models.FileField(blank=True, null=True)
     data = models.DateField(default=datetime.now(), blank=True, null=True)
     num_nf_entrada = models.CharField(max_length=20, blank=True, null=True)
     descricao = models.CharField(max_length=512, blank=True, null=True)

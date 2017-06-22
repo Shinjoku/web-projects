@@ -4,6 +4,12 @@
 
 <html lang="pt-br">
 	{% block body %}
+		{% if form.errors %}
+			<div class="alert alert-danger fade in">
+			  <a href="#" class="close" data-hide="alert" aria-label="close">&times;</a>
+			  <strong>Falha no cadastro!</strong></br>Verifique novamente os campos: {{ form.errors }}
+			</div>
+		{% endif %}
 		<header class="page-header text-center color-link-empresa">
 			<h1><strong>RSA</strong> - Ordem de serviço</h1>
 		</header>
